@@ -103,7 +103,7 @@ public class ProjectPageTests extends BaseTest {
         $("[data-option-index=\"2\"]").click();
         $(byText("Save")).click();
         $(byText("SomeLabel")).shouldBe(visible);
-        $(".md-icon md-icon-delete-outline ").shouldBe(visible).click();
+        $(".md-icon-delete-outline").shouldBe(visible).click();
         switchTo().alert().accept();
     }
 
