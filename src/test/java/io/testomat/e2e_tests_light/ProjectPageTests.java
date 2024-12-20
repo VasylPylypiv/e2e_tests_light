@@ -98,15 +98,11 @@ public class ProjectPageTests extends BaseTest {
         openProjectSettings();
 
         openLabelsAndFieldsPage();
-        $("[list=\"tags\"]").setValue("SomeLabel").pressEnter();
-        $(".ember-power-select-placeholder").click();
-        $("[data-option-index=\"2\"]").click();
-        $(byText("Save")).click();
-        $(byText("SomeLabel")).shouldBe(visible);
-        $(".md-icon-delete-outline").shouldBe(visible).click();
-        switchTo().alert().accept();
-    }
 
+        addNewLabel();
+
+        removeLabel();
+    }
 
     @Test
     public void exampleAssertDouble() {
@@ -191,5 +187,18 @@ public class ProjectPageTests extends BaseTest {
     private void openLabelsAndFieldsPage() {
         $(".subnav-menu-list-wrapper [id=\"ember27\"]").click();
         $("h2").shouldHave(text("Labels"));
+    }
+
+    private void addNewLabel() {
+        $("[list=\"tags\"]").setValue("SomeLabel").pressEnter();
+        $(".ember-power-select-placeholder").click();
+        $("[data-option-index=\"2\"]").click();
+        $(byText("Save")).click();
+        $(byText("SomeLabel")).shouldBe(visible);
+    }
+
+    private void removeLabel() {
+        $(".md-icon-delete-outline").shouldBe(visible).click();
+        switchTo().alert().accept();
     }
 }
